@@ -1,6 +1,7 @@
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 ctx.font='24px Arial';
+var cc='#b7f',bg='#eef';
 var music_on=0;
 var bs=10, cd=0;
 var px,py,cx,cy,oy,ufl,udv;
@@ -11,10 +12,10 @@ var jt=0;
 var my=1;
 var bx=0,by=0,bmy;
 var rot=0;
-var clrb='#eef',clrm='#fab';
+var clrb=bg,clrm='#fab';
 var aim=[0,0];
 var stage=1;
-var level=0;
+var level=1;
 var points=[[-40,-40],[-120,0],[-160,-40],[-96,-104],[-140,-160],[-88,-112],[-60,-140],[-48,-140],[-48,-180],[-28,-140],[-8,-140],[60,-60],[160,-60],[200,-20],[200,160],[180,160],[180,60],[20,60],[20,160],[0,160],[0,60],[0,0]];
 var point=0;
 var first_time=1;
@@ -226,7 +227,7 @@ function draw_goal(){
 bp();
 cloud_base(goal[0]-10,pxy(goal[1])+150+oy, 20,10);
 cloud_base(goal[0]+190,pxy(goal[1])+150+oy, 20,10);
-r_n('#fff');
+r_n(cc);
 ctx.rect(goal[0],pxy(goal[1])+oy,200,100);
 ctx.fillStyle='#dad';
 ctx.lineTo(goal[0],pxy(goal[1])+150+oy);
@@ -300,7 +301,7 @@ ctx.stroke();
 ctx.closePath();
 bp();
 ctx.rect(x-55,y+oy,110,40);
-r_n('#fff');
+r_n(cc);
 }
 
 function rainbow(x,y){
@@ -337,13 +338,13 @@ bp();
 let s=10;
 ctx.rect(x+40,y-20,20,20);
 ctx.arc(x+50,y-s*12,s*13,Math.PI*0.32,Math.PI*0.68);
-r_n("#eef");
+r_n(bg);
 ctx.arc(x+30,y+s,s,Math.PI,0);
-r_n("#fff");
+r_n(cc);
 ctx.arc(x+50,y+2*s,2*s,Math.PI,0);
-r_n("#fff");
+r_n(cc);
 ctx.arc(x+90,y+s,s,Math.PI,0);
-r_n("#fff");
+r_n(cc);
 }
 
 function cf(){
@@ -372,7 +373,7 @@ cf();
 
 function cloud_base(x,y,w,h){
 bp();
-ctx.fillStyle = '#fff';
+ctx.fillStyle = cc;
 ctx.rect(x,y,w,h);
 ctx.arc(x,y+h*.55,h*.3,0,2*Math.PI); 
 ctx.arc(x,y+h*.1,h*.3,0,2*Math.PI);
@@ -451,7 +452,7 @@ color_selector();
 }else if(stage==4){
 let n=color_pick(x,y);
 if(n>7){
-clrb='#eef';
+clrb=bg;
 stage=1;
 color_selector();
 }else if (n>0){
